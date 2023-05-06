@@ -2,7 +2,7 @@
   <div class="container">
 
 
-    <div class="users" v-if="Users">
+    <div class="users" v-if="Users" >
       <ul>
         <li v-for="user in Users" :key="user.id">
           <div id="user-div">

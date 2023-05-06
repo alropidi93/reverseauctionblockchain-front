@@ -41,11 +41,11 @@
       async submit() {
         try {
             
-            await this.Register(this.form);
-        //   this.$router.push("/posts");
+          await this.Register(this.form);
+          this.$router.push("/");
           this.showError = false
         } catch (error) {
-            console.log(error);
+          console.log(error);
           this.showError = true
         }
       },

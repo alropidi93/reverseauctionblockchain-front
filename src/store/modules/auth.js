@@ -15,18 +15,17 @@ const getters = {
 
 const actions = {
     async Register({dispatch}, form) {
-        // await axios.post('user/save',form )
-        let UserForm = new FormData()
-        UserForm.append('username', form.username)
-        UserForm.append('password', form.password)
+        await axios.post('user/save',form )
+        const User = new FormData();
+        User.append("username", form.username);
+        User.append("password", form.password);
 
-        await dispatch('LogIn', UserForm)
+        await dispatch('LogIn', User)
     },
     async LogIn({commit}, User) {
         console.log("Login");
        
         var res = await axios.post('login',{}, { auth: { username: User.get('username'), password: User.get('password')}})
-        console.log(res.data['access_token']);
         console.log("Se logueo");
         await commit('setUser', User.get('username'))
         await commit('setAccessToken', res.data['access_token'])
@@ -37,6 +36,7 @@ const actions = {
     },
     async GetUsers({ commit, getters },){
         let response = await axios.get('users',{ headers: { 'Authorization': 'Bearer ' + getters.AccessToken}})
+       
         commit('setUsers', response.data)
     },
       
@@ -52,6 +52,7 @@ const mutations = {
     LogOut(state){
         state.user = null
         state.users = null
+        state.accessToken = null
     },
     setUsers(state, users){
         state.users = users
