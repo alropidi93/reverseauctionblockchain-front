@@ -1,19 +1,17 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <NavBar/>
+  <p>Heyyyyyy welcome {{ username }}</p>
   </div>
+  <router-view/>
 </template>
-
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
-import NavBar from '@/components/NavBar.vue'
 
 export default {
   name: 'HomeView',
+  computed : {
+    username : function(){ return this.$store.getters.StateUser},
+  },
   components: {
-    NavBar
   }
 }
 </script>

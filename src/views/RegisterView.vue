@@ -7,8 +7,8 @@
             <input type="text" name="username" v-model="form.username" />
           </div>
           <div>
-            <label for="full_name">Full Name:</label>
-            <input type="text" name="full_name" v-model="form.full_name" />
+            <label for="fullname">Full Name:</label>
+            <input type="text" name="fullname" v-model="form.fullname" />
           </div>
           <div>
             <label for="password">Password:</label>
@@ -30,7 +30,7 @@
       return {
         form: {
           username: "",
-          full_name: "",
+          fullname: "",
           password: "",
         },
         showError: false
@@ -40,10 +40,12 @@
       ...mapActions(["Register"]),
       async submit() {
         try {
-          await this.Register(this.form);
-          this.$router.push("/posts");
+            
+            await this.Register(this.form);
+        //   this.$router.push("/posts");
           this.showError = false
         } catch (error) {
+            console.log(error);
           this.showError = true
         }
       },
