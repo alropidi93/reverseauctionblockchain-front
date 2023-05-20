@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import UserDashboard from '@/components/UserDashboard.vue'
+import AuctionDashboard from '@/components/AuctionDashboard.vue'
 import store from '@/store'
 
 const routes = [
@@ -17,6 +18,12 @@ const routes = [
           component: UserDashboard,
 
       },
+      {
+        path: 'auctions',
+        name: 'auctions',
+        component: AuctionDashboard,
+
+    },
     ]
   },
   
