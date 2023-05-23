@@ -18,6 +18,13 @@ const actions = {
        
         commit('setAuctions', response.data)
     },
+    async CreateAuction(_,CreateAuctionForm) {
+        console.log("CreateAuctionForm");
+        console.log(CreateAuctionForm);
+        await axios.post('reverseauction/create',CreateAuctionForm )
+        
+    },
+
       
 };
 const mutations = {
@@ -25,6 +32,7 @@ const mutations = {
     setAuctions(state, auctions){
         state.auctions = auctions
     },
+
      
 
 };

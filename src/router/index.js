@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import UserDashboard from '@/components/UserDashboard.vue'
 import AuctionDashboard from '@/components/AuctionDashboard.vue'
+import AuctionCreate from '@/components/AuctionCreate.vue'
 import store from '@/store'
 
 const routes = [
@@ -23,7 +24,13 @@ const routes = [
         name: 'auctions',
         component: AuctionDashboard,
 
-    },
+      },
+      {
+        path: 'auctions/create',
+        name: 'auction-create',
+        component: AuctionCreate,
+
+      },
     ]
   },
   
