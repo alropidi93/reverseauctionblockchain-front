@@ -39,7 +39,7 @@ export default {
       User.append("password", this.form.password);
       try {
           await this.LogIn(User);
-          this.$router.push("/");
+          this.$router.push({ name: 'auctions' })
           this.showError = false
       } catch (error) {
         this.showError = true

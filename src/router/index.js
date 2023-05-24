@@ -2,8 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import UserDashboard from '@/components/UserDashboard.vue'
 import AuctionDashboard from '@/components/AuctionDashboard.vue'
-import AuctionCreate from '@/components/AuctionCreate.vue'
+import CreateAuctionForm from '@/components/CreateAuctionForm.vue'
+import DashboardLayout from '@/components/layouts/DashboardLayout.vue'
 import store from '@/store'
+import UserProfile from '@/components/templates/UserProfile.vue'
 
 const routes = [
   {
@@ -25,12 +27,7 @@ const routes = [
         component: AuctionDashboard,
 
       },
-      {
-        path: 'auctions/create',
-        name: 'auction-create',
-        component: AuctionCreate,
-
-      },
+    
     ]
   },
   
@@ -47,7 +44,60 @@ const routes = [
   
     component: () => import(/* webpackChunkName: "Register" */ '../views/RegisterView.vue'),
     meta: {guest: true},
-  }
+  },
+  {
+    path: '/example/',
+    component: DashboardLayout,
+    // redirect: '/admin/overview',
+    children: [
+
+      {
+        path: 'user',
+        name: 'User',
+        component: UserProfile
+      },
+      {
+        path: 'auctions',
+        name: 'Auctions',
+        component: AuctionDashboard
+      },
+      {
+        path: 'create/auction',
+        name: 'Create-Auction',
+        component: CreateAuctionForm
+      },
+      // {
+      //   path: 'table-list',
+      //   name: 'Table List',
+      //   component: TableList
+      // },
+      // {
+      //   path: 'typography',
+      //   name: 'Typography',
+      //   component: Typography
+      // },
+      // {
+      //   path: 'icons',
+      //   name: 'Icons',
+      //   component: Icons
+      // },
+      // {
+      //   path: 'maps',
+      //   name: 'Maps',
+      //   component: Maps
+      // },
+      // {
+      //   path: 'notifications',
+      //   name: 'Notifications',
+      //   component: Notifications
+      // },
+      // {
+      //   path: 'upgrade',
+      //   name: 'Upgrade to PRO',
+      //   component: Upgrade
+      // }
+    ]
+  },
 
 ]
 
