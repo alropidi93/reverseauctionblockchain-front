@@ -9,7 +9,7 @@ import UserProfile from '@/components/templates/UserProfile.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/custom',
     name: 'home',
     component: HomeView,
     meta: {requiresAuth: true},
@@ -21,12 +21,7 @@ const routes = [
           component: UserDashboard,
 
       },
-      {
-        path: 'auctions',
-        name: 'auctions',
-        component: AuctionDashboard,
-
-      },
+   
     
     ]
   },
@@ -46,9 +41,10 @@ const routes = [
     meta: {guest: true},
   },
   {
-    path: '/example/',
+    path: '/',
     component: DashboardLayout,
-    // redirect: '/admin/overview',
+    redirect: '/auctions',
+    meta: {requiresAuth: true},
     children: [
 
       {
