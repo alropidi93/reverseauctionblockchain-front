@@ -22,12 +22,117 @@
       Crear
     </button>
   </form> 
+  <form>
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" id="form6Example1" class="form-control" />
+        <label class="form-label" for="form6Example1">First name</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" id="form6Example2" class="form-control" />
+        <label class="form-label" for="form6Example2">Last name</label>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" id="form6Example1" class="form-control" />
+        <label class="form-label" for="form6Example1">First name</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" id="form6Example2" class="form-control" />
+        <label class="form-label" for="form6Example2">Last name</label>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" id="form6Example1" class="form-control" />
+        <label class="form-label" for="form6Example1">First name</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" id="form6Example2" class="form-control" />
+        <label class="form-label" for="form6Example2">Last name</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" id="form6Example2" class="form-control" />
+        <label class="form-label" for="form6Example2">Last name</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <select class="form-select" v-model="createForm.goodServiceCode" >
+          <option  :value="'default'" >Elige el bien o servicio</option>
+          <option v-for="(opcion,index) in GoodServices" v-bind:key="index" :value="opcion.code" >{{ opcion.name }}</option>
+        </select>
+
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- Text input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example3" class="form-control" />
+    <label class="form-label" for="form6Example3">Company name</label>
+  </div>
+
+  <!-- Text input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example4" class="form-control" />
+    <label class="form-label" for="form6Example4">Address</label>
+  </div>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email" id="form6Example5" class="form-control" />
+    <label class="form-label" for="form6Example5">Email</label>
+  </div>
+
+  <!-- Number input -->
+  <div class="form-outline mb-4">
+    <input type="number" id="form6Example6" class="form-control" />
+    <label class="form-label" for="form6Example6">Phone</label>
+  </div>
+
+  <!-- Message input -->
+  <div class="form-outline mb-4">
+    <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+    <label class="form-label" for="form6Example7">Additional information</label>
+  </div>
+
+  <!-- Checkbox -->
+  <div class="form-check d-flex justify-content-center mb-4">
+    <input class="form-check-input me-2" type="checkbox" value="" id="form6Example8" checked />
+    <label class="form-check-label" for="form6Example8"> Create an account? </label>
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
+</form>
 </template>
 
 <script>
 // const idEntidadConvocante = "ENT000001";
-const objetoContratacionOpciones = ["bien", "servicio"];
-import { mapActions } from "vuex";
+
+
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Create-Auction",
   components: {},
@@ -37,9 +142,9 @@ export default {
       createForm:{
         auctionCode:"",
         auctionName:"",
-        procurementType:"",
-      },
-      opciones:[...objetoContratacionOpciones],
+        procurementType:0,
+        goodServiceCode:"default",
+      }
 
     };
   },
@@ -49,12 +154,13 @@ export default {
   },
   mounted:function(){
     console.log("monta form");
+    this.GetGoodServices()
   },
   computed: {
-    
+    ...mapGetters({ GoodServices: "GoodServices" }),
   },
   methods: {
-    ...mapActions([ "CreateAuction"]),
+    ...mapActions([ "CreateAuction","GetGoodServices"]),
     async submit(){
       console.log("Crearemos");
       await this.CreateAuction(this.createForm);
@@ -65,49 +171,5 @@ export default {
 };
 </script>
 <style scoped>
-* {
-  box-sizing: border-box;
-}
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-button[type="submit"] {
-  background-color: #4caf50;
-  color: white;
-  padding: 12px 20px;
-  cursor: pointer;
-  border-radius: 30px;
-  margin: 10px;
-}
-button[type="submit"]:hover {
-  background-color: #45a049;
-}
-input {
-  width: 60%;
-  margin: 15px;
-  border: 0;
-  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-  padding: 10px;
-  border-radius: 30px;
-}
-textarea {
-  width: 75%;
-  resize: vertical;
-  padding: 15px;
-  border-radius: 15px;
-  border: 0;
-  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-  height: 150px;
-  margin: 15px;
-}
-ul {
-  list-style: none;
-}
-#user-div {
-  border: 3px solid #000;
-  width: 500px;
-  margin: auto;
-  margin-bottom: 5px;
-}
+
 </style>

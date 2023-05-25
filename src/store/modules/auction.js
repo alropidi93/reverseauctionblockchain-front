@@ -2,14 +2,16 @@ import axios from 'axios';
 const state = {
 
     auctions: null,
+    goodServices: null,
 
 };
 
-// const getters = {
+const getters = {
   
-//     Auctions: state => state.auctions,
+    // Auctions: state => state.auctions,
+    GoodServices: state => state.goodServices,
 
-// };
+};
 
 const actions = {
     
@@ -25,6 +27,12 @@ const actions = {
         
     },
 
+    async GetGoodServices({ commit },){
+        let response = await axios.get('reverseauction/getGoodServices',{ headers: { }})
+       
+        commit('setGoodServices', response.data)
+    },
+
       
 };
 const mutations = {
@@ -32,13 +40,16 @@ const mutations = {
     setAuctions(state, auctions){
         state.auctions = auctions
     },
+    setGoodServices(state, goodServices){
+        state.goodServices = goodServices
+    },
 
      
 
 };
 export default {
   state,
-//   getters,
+  getters,
   actions,
   mutations
 };
