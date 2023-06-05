@@ -8,6 +8,7 @@
           <div id="user-div">
             <p>{{ user.username }}</p>
             <p>{{ user.fullname }}</p>
+            <p>{{ user.entityInfo.name }}</p>
           </div>
         </li>
       </ul>

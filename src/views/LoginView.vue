@@ -3,6 +3,8 @@
         <div>
         <form @submit.prevent="submit">
             <div>
+            <h1 >Credenciales de acceso</h1>
+            <br>
             <label for="username">Username:</label>
             <input type="text" name="username" v-model="form.username" />
             </div>
@@ -57,14 +59,14 @@ label {
   display: inline-block;
 }
 button[type=submit] {
-  background-color: #4CAF50;
+  background-color: #f29909;
   color: white;
   padding: 12px 20px;
   cursor: pointer;
   border-radius:30px;
 }
 button[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #edbb6a;
 }
 input {
   margin: 5px;

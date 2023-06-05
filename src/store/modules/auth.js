@@ -22,13 +22,24 @@ const actions = {
 
         await dispatch('LogIn', User)
     },
-    async LogIn({commit}, User) {
+    async LogIn({commit,dispatch}, User) {
         console.log("Login");
        
         var res = await axios.post('login',{}, { auth: { username: User.get('username'), password: User.get('password')}})
         console.log("Se logueo");
-        await commit('setUser', User.get('username'))
+     
         await commit('setAccessToken', res.data['access_token'])
+        await dispatch('GetInfo')
+    },
+
+    async GetInfo({commit,getters}) {
+        console.log("GetInfo");
+        console.log(getters.AccessToken);
+        let response = await axios.get('user/info',{ headers: { 'Authorization': 'Bearer ' + getters.AccessToken}})
+        console.log("Trajo info");
+        await commit('setUser', response.data)
+  
+        
     },
 
     async LogOut({commit}){

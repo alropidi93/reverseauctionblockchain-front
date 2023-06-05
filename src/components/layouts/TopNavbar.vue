@@ -44,7 +44,7 @@
             <a class="dropdown-item" href="#">Separated link</a>
           </base-dropdown>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" @click="logout">
               Log out
             </a>
           </li>
@@ -66,6 +66,7 @@
          console.log(this.$router.name);
          return this.$route.name
       },
+      isLoggedIn : function(){ return this.$store.getters.isAuthenticated},
     },
     data () {
       return {
@@ -87,8 +88,13 @@
       },
       hideSidebar () {
         this.$sidebar.displaySidebar(false)
+      },
+      async logout (){
+          await this.$store.dispatch('LogOut')
+          this.$router.push('/login')
       }
-    }
+    },
+
   }
 
 </script>

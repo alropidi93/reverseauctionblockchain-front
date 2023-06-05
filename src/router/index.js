@@ -3,6 +3,12 @@ import HomeView from '../views/HomeView.vue'
 import UserDashboard from '@/components/UserDashboard.vue'
 import AuctionDashboard from '@/components/AuctionDashboard.vue'
 import CreateAuctionForm from '@/components/CreateAuctionForm.vue'
+import SelectionAuctionDetail from '@/components/SelectionAuctionDetail.vue'
+import ActivitiesAuctionDetail from '@/components/ActivitiesAuctionDetail.vue'
+import AuctionBidderEnrollment from '@/components/AuctionBidderEnrollment.vue'
+import AuctionFirstBid from '@/components/AuctionFirstBid.vue'
+import AuctionPriceBid from '@/components/AuctionPriceBid.vue'
+
 import DashboardLayout from '@/components/layouts/DashboardLayout.vue'
 import store from '@/store'
 import UserProfile from '@/components/templates/UserProfile.vue'
@@ -62,6 +68,36 @@ const routes = [
         name: 'Create-Auction',
         component: CreateAuctionForm
       },
+      {
+        path: 'detail/auction/:auctionCode/selection',
+        name: 'Selection-Auction-Detail',
+        component: SelectionAuctionDetail
+      },
+      {
+        path: 'detail/auction/:auctionCode/activities',
+        name: 'Activities-Auction-Detail',
+        component: ActivitiesAuctionDetail
+      },
+      {
+        path: 'auction/:auctionCode/bidder-enrollment',
+        name: 'Auction-Bidder-Enrollment',
+        component: AuctionBidderEnrollment
+      },
+      {
+        path: 'auction/:auctionCode/first-bid',
+        name: 'Auction-First-Bid',
+        component: AuctionFirstBid
+      },
+      {
+        path: 'auction/:auctionCode/price-bid',
+        name: 'Auction-Price-Bid',
+        component: AuctionPriceBid
+      },
+      // {
+      //   path: 'auction/:auctionCode/firstBid',
+      //   name: 'Activities-Auction-Detail',
+      //   component: ActivitiesAuctionDetail
+      // },
       // {
       //   path: 'table-list',
       //   name: 'Table List',

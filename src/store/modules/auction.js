@@ -8,7 +8,7 @@ const state = {
 
 const getters = {
   
-    // Auctions: state => state.auctions,
+    Auctions: state => state.auctions,
     GoodServices: state => state.goodServices,
 
 };
@@ -20,10 +20,11 @@ const actions = {
        
         commit('setAuctions', response.data)
     },
-    async CreateAuction(_,CreateAuctionForm) {
+    async CreateAuction({rootState }, payload) {
         console.log("CreateAuctionForm");
-        console.log(CreateAuctionForm);
-        await axios.post('reverseauction/create',CreateAuctionForm )
+        console.log(rootState.auth.accessToken);
+        console.log(payload.entityCode);
+        await axios.post('reverseauction/create/' + payload.entityCode ,payload.auctionData,{ headers: { 'Authorization': 'Bearer ' + rootState.auth.accessToken}}  )
         
     },
 

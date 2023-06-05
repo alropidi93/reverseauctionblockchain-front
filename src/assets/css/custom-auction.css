@@ -1,0 +1,30 @@
+.themed-grid-col {
+    text-align: left;
+}
+div.form-label {
+    text-align: left;
+}
+
+b {
+    text-align: left;
+    margin-bottom: 2%;
+    font-size:larger
+}
+/* .table > thead > tr > th:last-child{
+  
+
+    width: 50%;
+} */
+
+.table > thead > tr > th:last-child, .table > tbody > tr > td:last-child {
+    width: auto;
+}
+td {
+    text-align: left;
+}
+.row {
+    font-size: 14px;
+}
+p {
+    font-size: 10px;
+}

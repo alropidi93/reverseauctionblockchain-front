@@ -11,8 +11,8 @@
             
             </template>
             <l-table class="table-hover table-striped"
-                     :columns="table1.columns"
-                     :data="table1.data">
+                     :columns="customColumns"
+                     :data="Auctions">
             </l-table>
           </card>
 
@@ -28,42 +28,12 @@
 import LTable from '@/components/templates/Table.vue'
 import Card from '@/components/templates/Card.vue'
 
-const tableColumns = ['Id', 'Name', 'Salary', 'Country', 'City']
-const tableData = [{
-  id: 1,
-  name: 'Dakota Rice',
-  salary: '$36.738',
-  country: 'Niger',
-  city: 'Oud-Turnhout'
-},
-{
-  id: 2,
-  name: 'Minerva Hooper',
-  salary: '$23,789',
-  country: 'Curaçao',
-  city: 'Sinaai-Waas'
-},
-{
-  id: 3,
-  name: 'Sage Rodriguez',
-  salary: '$56,142',
-  country: 'Netherlands',
-  city: 'Baileux'
-},
-{
-  id: 4,
-  name: 'Philip Chaney',
-  salary: '$38,735',
-  country: 'Korea, South',
-  city: 'Overland Park'
-},
-{
-  id: 5,
-  name: 'Doris Greene',
-  salary: '$63,542',
-  country: 'Malawi',
-  city: 'Feldkirchen in Kärnten'
-}]
+const tableColumns = [
+  {'label':'Código Convocatoria','map':'auctionCode'},
+  {'label':'Bien o servicio','map':'goodServCode'}, 
+  {'label':'Propietario','map':'owner'}, 
+]
+
 
 
 import { mapGetters, mapActions } from "vuex";
@@ -79,14 +49,11 @@ export default {
         title: "",
         write_up: "",
       },
-      table1: {
-          columns: [...tableColumns],
-          data: [...tableData]
-        },
-      table2: {
-        columns: [...tableColumns],
-        data: [...tableData]
-      }
+      
+      customColumns: [...tableColumns],
+         
+      
+
     };
   },
   created: function() {
